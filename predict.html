@@ -1,0 +1,33 @@
+{% extends "home.html" %}
+{% block content %}
+<div class="max-w-2xl mx-auto py-10">
+    <div class="glass p-10 shadow-2xl animate__animated animate__zoomIn">
+        <h2 class="text-3xl font-black text-gray-800 text-center mb-8">Leaf Disease Scanner</h2>
+        
+        <form action="/predict" method="POST" class="space-y-6">
+            <div class="border-4 border-dashed border-gray-200 rounded-3xl p-12 text-center bg-gray-50 hover:border-green-400 transition">
+                <input type="file" name="file" id="file" class="hidden" onchange="this.form.submit()">
+                <label for="file" class="cursor-pointer">
+                    <span class="text-5xl">🍃</span>
+                    <p class="mt-4 text-gray-500 font-bold">Click to Upload Leaf Photo</p>
+                </label>
+            </div>
+            <button type="submit" class="w-full btn-primary py-4 rounded-2xl font-bold text-lg">Analyze Now</button>
+        </form>
+
+        {% if result %}
+        <div class="mt-10 p-8 bg-white rounded-3xl border-l-8 border-green-500 shadow-lg animate__animated animate__bounceIn">
+            <h3 class="text-2xl font-black text-gray-800">{{ result.crop }}</h3>
+            <p class="text-red-600 font-bold text-lg">Detected: {{ result.disease }}</p>
+            <p class="text-gray-400 text-sm mt-1">AI Confidence: {{ result.confidence }}</p>
+            
+            <div class="mt-6 p-4 bg-green-50 rounded-xl">
+                <p class="font-bold text-green-800">Action Plan:</p>
+                <p class="text-green-700 italic">{{ result.remedy }}</p>
+            </div>
+            <button onclick="window.location.reload()" class="mt-6 text-sm text-blue-500 font-bold">↺ Scan Different Crop</button>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

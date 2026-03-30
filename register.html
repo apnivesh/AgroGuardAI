@@ -1,0 +1,20 @@
+{% extends "home.html" %}
+{% block content %}
+<div class="flex items-center justify-center py-10">
+    <div class="glass p-10 w-full max-w-md animate__animated animate__fadeInUp shadow-2xl">
+        <h2 class="text-3xl font-black text-gray-800 mb-2">Create Account</h2>
+        <p class="text-gray-500 mb-8">Start your AI journey today.</p>
+        
+        <form action="/register" method="POST" class="space-y-4">
+            <input type="text" name="name" placeholder="Full Name" required class="w-full p-4 rounded-2xl border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-green-500 outline-none">
+            <input type="email" name="email" placeholder="Email Address" required class="w-full p-4 rounded-2xl border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-green-500 outline-none">
+            <input type="password" name="password" placeholder="Create Password" required class="w-full p-4 rounded-2xl border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-green-500 outline-none">
+            
+            <button type="submit" class="w-full bg-green-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:bg-green-700 transition transform hover:scale-[1.02]">
+                Sign Up Now
+            </button>
+        </form>
+        <p class="mt-6 text-center text-gray-500">Already have an account? <a href="/login" class="text-green-600 font-bold">Login</a></p>
+    </div>
+</div>
+{% endblock %}

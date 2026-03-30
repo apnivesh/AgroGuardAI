@@ -1,0 +1,28 @@
+{% extends "home.html" %}
+{% block content %}
+<div class="max-w-2xl mx-auto mt-10 p-6 animate__animated animate__fadeInUp">
+    <div class="glass overflow-hidden shadow-2xl">
+        <div class="h-32 bg-gradient-to-r from-blue-600 to-green-600"></div>
+        <div class="p-8 -mt-16 text-center">
+            <div class="w-32 h-32 bg-white rounded-full mx-auto border-4 border-white shadow-xl flex items-center justify-center text-4xl font-black text-green-600">
+                {{ name[0] | upper }}
+            </div>
+            <h2 class="text-3xl font-black text-gray-800 mt-4">{{ name }}</h2>
+            <p class="text-gray-400">{{ email }}</p>
+            
+            <div class="grid grid-cols-2 gap-4 mt-10">
+                <div class="p-4 bg-gray-50 rounded-2xl">
+                    <p class="text-xs font-bold text-gray-400 uppercase">Total Scans</p>
+                    <p class="text-2xl font-black text-gray-800">14</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-2xl">
+                    <p class="text-xs font-bold text-gray-400 uppercase">Member Since</p>
+                    <p class="text-2xl font-black text-gray-800">2026</p>
+                </div>
+            </div>
+
+            <a href="/logout" class="mt-10 inline-block text-red-500 font-bold hover:underline">Secure Logout</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

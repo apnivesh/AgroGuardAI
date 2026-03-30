@@ -1,0 +1,47 @@
+{% extends "home.html" %}
+{% block content %}
+<div class="max-w-6xl mx-auto p-6 space-y-6 animate__animated animate__fadeIn">
+    <div class="flex justify-between items-end">
+        <div>
+            <h2 class="text-4xl font-black text-gray-800">Welcome, {{ name }}!</h2>
+            <p class="text-gray-500">Here is your field's current health status.</p>
+        </div>
+        <div class="bg-white px-4 py-2 rounded-xl shadow-sm border border-gray-100 font-bold text-green-600">
+            Field ID: #AG-992
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass p-6 border-b-4 border-blue-500">
+            <p class="text-gray-400 font-bold text-xs uppercase">Temperature</p>
+            <p class="text-4xl font-black text-gray-800">{{ sensors.temp }}°C</p>
+        </div>
+        <div class="glass p-6 border-b-4 border-cyan-500">
+            <p class="text-gray-400 font-bold text-xs uppercase">Humidity</p>
+            <p class="text-4xl font-black text-gray-800">{{ sensors.humidity }}%</p>
+        </div>
+        <div class="glass p-6 border-b-4 {% if risk == 'High' %}border-red-500{% else %}border-green-500{% endif %}">
+            <p class="text-gray-400 font-bold text-xs uppercase">Disease Risk</p>
+            <p class="text-4xl font-black {% if risk == 'High' %}text-red-600{% else %}text-green-600{% endif %}">{{ risk }}</p>
+        </div>
+    </div>
+
+    <div class="glass p-8 bg-gradient-to-r from-green-600 to-emerald-800 text-white flex justify-between items-center shadow-2xl">
+        <div>
+            <h3 class="text-2xl font-bold">New Pest Detected Nearby?</h3>
+            <p class="opacity-80">Use the AI Scanner to verify leaf health immediately.</p>
+        </div>
+        <a href="/predict" class="bg-white text-green-700 px-8 py-3 rounded-xl font-bold shadow-lg hover:scale-105 transition">Start Scan</a>
+    </div>
+
+    <div class="glass p-6">
+        <h3 class="font-bold text-gray-800 mb-4">Critical Farmer Alerts</h3>
+        {% for alert in alerts %}
+        <div class="flex items-center justify-between p-4 bg-red-50 rounded-xl border border-red-100 mb-2 animate__animated animate__slideInLeft">
+            <p class="text-red-700 font-medium">⚠️ {{ alert.msg }}</p>
+            <span class="text-xs font-black text-red-400 uppercase">{{ alert.level }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

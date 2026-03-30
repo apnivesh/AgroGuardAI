@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroGuardAI | Smart Farming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="min-h-screen">
+    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto animate__animated animate__fadeInDown">
+        <a href="/" class="text-3xl font-black text-green-700 tracking-tighter">AGRO<span class="text-blue-600">GUARD</span></a>
+        <div class="space-x-6 font-bold text-gray-600 flex items-center">
+            {% if session.get('user_id') %}
+                <a href="/dashboard" class="hover:text-green-600 transition">Dashboard</a>
+                <a href="/predict" class="hover:text-green-600 transition">Scanner</a>
+                <a href="/profile" class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-700 border-2 border-green-200">
+                    {{ session.get('user_name')[0] | upper }}
+                </a>
+            {% else %}
+                <a href="/login" class="hover:text-green-600 transition">Login</a>
+                <a href="/register" class="bg-green-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-green-700 transition">Join Free</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}
+        <div class="text-center py-20 px-4 animate__animated animate__zoomIn">
+            <h1 class="text-6xl md:text-8xl font-black text-gray-900 leading-tight">
+                Predict. Protect. <br><span class="text-green-600 underline decoration-blue-500">Prosper.</span>
+            </h1>
+            <p class="mt-6 text-xl text-gray-500 max-w-2xl mx-auto">
+                Advanced AI-based pest detection and disease forecasting for the modern farmer.
+            </p>
+            <div class="mt-10 space-x-4">
+                <a href="/register" class="bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold text-xl shadow-2xl hover:bg-blue-700 transition inline-block">Start Free Trial</a>
+            </div>
+        </div>
+        {% endblock %}
+    </main>
+</body>
+</html>
