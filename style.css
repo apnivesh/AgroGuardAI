@@ -1,0 +1,16 @@
+body {
+    background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+}
+.glass {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2rem;
+}
+.btn-primary {
+    background: linear-gradient(to right, #10b981, #3b82f6);
+    color: white;
+    transition: all 0.3s ease;
+}
